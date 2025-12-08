@@ -132,7 +132,9 @@
 
 /* 하단 저장 버튼 영역 */
 .bottom-save {
-    margin-top: 24px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 .save-btn {

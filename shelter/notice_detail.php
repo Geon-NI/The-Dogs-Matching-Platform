@@ -172,7 +172,7 @@ $dog_breed  = $dog['BREED'];
 $dog_age    = $dog['AGE'];
 $dog_gender = $dog['GENDER'] === 'M' ? '수컷' : '암컷';
 $dog_color  = $dog['COLOR'];
-$dog_weight = $dog['weight'];
+$dog_weight = $dog['WEIGHT'];
 $dog_img    = $dog['IMAGE_URL'] ?: '../img/dog-placeholder.png';
 
 // 신청자 목록
@@ -278,12 +278,12 @@ oci_close($conn);
                 <div class="summary-row">
                     <div class="summary-label">나이</div>
                     <div class="summary-value" id="dogAgeText">
-                        : <?php echo htmlspecialchars($dog_age); ?>살
+                        : <?php echo htmlspecialchars($dog_age); ?> 살
                     </div>
 
                     <div class="summary-label">몸무게</div>
                     <div class="summary-value" id="dogWeightText">
-                        : <?php echo htmlspecialchars($dog_weight); ?>kg
+                        : <?php echo htmlspecialchars($dog_weight); ?> kg
                     </div>
                 </div>
             </div>

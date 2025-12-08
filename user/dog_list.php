@@ -38,31 +38,37 @@ if (!$conn) {
     die("DB 접속 실패: " . htmlspecialchars($msg, ENT_QUOTES, 'UTF-8'));
 }
 
-// 3-1) 품종/색 드롭다운용 목록 조회
-$breed_list = [];
-$color_list = [];
+// 3-1) 품종 / 색 / 성별 드롭다운용 목록 조회
+$breed_list  = [];
+$color_list  = [];
+$gender_list = [];
 
 // 품종 목록
-$sql_breed = "SELECT DISTINCT breed FROM DOG ORDER BY breed";
+$sql_breed = "SELECT DISTINCT breed FROM DOG WHERE breed IS NOT NULL ORDER BY breed";
 $stid_breed = oci_parse($conn, $sql_breed);
 oci_execute($stid_breed);
 while ($row = oci_fetch_assoc($stid_breed)) {
-    if (!empty($row['BREED'])) {
-        $breed_list[] = $row['BREED'];
-    }
+    $breed_list[] = $row['BREED'];
 }
 oci_free_statement($stid_breed);
 
 // 색 목록
-$sql_color = "SELECT DISTINCT color FROM DOG ORDER BY color";
+$sql_color = "SELECT DISTINCT color FROM DOG WHERE color IS NOT NULL ORDER BY color";
 $stid_color = oci_parse($conn, $sql_color);
 oci_execute($stid_color);
 while ($row = oci_fetch_assoc($stid_color)) {
-    if (!empty($row['COLOR'])) {
-        $color_list[] = $row['COLOR'];
-    }
+    $color_list[] = $row['COLOR'];
 }
 oci_free_statement($stid_color);
+
+// (선택) 성별도 DB 값 기준으로 하고 싶으면
+$sql_gender = "SELECT DISTINCT gender FROM DOG WHERE gender IS NOT NULL ORDER BY gender";
+$stid_gender = oci_parse($conn, $sql_gender);
+oci_execute($stid_gender);
+while ($row = oci_fetch_assoc($stid_gender)) {
+    $gender_list[] = $row['GENDER'];   // 'M', 'F' 이런 코드들
+}
+oci_free_statement($stid_gender);
 
 
 
@@ -258,17 +264,22 @@ oci_close($conn);
         <option value="">전체 색</option>
         <?php foreach ($color_list as $c): ?>
             <option value="<?= htmlspecialchars($c, ENT_QUOTES, 'UTF-8') ?>"
+                <?= ($filter_color === $c) ? 'selected' : '' ?>
                 <?= ($filter_color === $c) ? 'selected' : '' ?>>
                 <?= htmlspecialchars($c, ENT_QUOTES, 'UTF-8') ?>
             </option>
         <?php endforeach; ?>
     </select>
 
-    <!-- 성별 필터 -->
+    <!-- 성별 필터 (DB 값 사용 버전) -->
     <select name="gender" class="filter-select">
         <option value="">전체 성별</option>
-        <option value="M" <?= ($filter_gender === 'M') ? 'selected' : '' ?>>수컷</option>
-        <option value="F" <?= ($filter_gender === 'F') ? 'selected' : '' ?>>암컷</option>
+        <?php foreach ($gender_list as $g): ?>
+            <option value="<?= htmlspecialchars($g, ENT_QUOTES, 'UTF-8') ?>"
+                <?= ($filter_gender === $g) ? 'selected' : '' ?>>
+                <?= ($g === 'M') ? '수컷' : (($g === 'F') ? '암컷' : $g) ?>
+            </option>
+        <?php endforeach; ?>
     </select>
     <button type="submit" class="search-btn">검색</button>
 </form>

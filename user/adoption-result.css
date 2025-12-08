@@ -35,12 +35,12 @@
     border-collapse: collapse;
     background-color: #ffffff;
     border: 1px solid #ffffff;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
 }
 
 .table-container thead th {
-    padding: 30px 10px;
+    padding: 30px 30px;
     font-size: 23px;
     background-color: #faf4da;
     border-bottom: 2px solid #000;
@@ -48,7 +48,7 @@
 
 .table-container tbody td {
     text-align: center;
-    padding: 40px 0;
+    padding: 30px 0;
     border-bottom: 1px solid #ddd;
     font-size: 23px;
 }

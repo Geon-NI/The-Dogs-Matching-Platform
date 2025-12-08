@@ -129,7 +129,7 @@
 /* ====================== 하단 바 & 페이지네이션 ====================== */
 .bottom-bar {
     width: 100%;
-    margin-top: 26px;
+    margin-top: 70px;
     display: flex;
     align-items: center;
     position: relative;
@@ -137,7 +137,7 @@
 
 .pagination {
     display: flex;
-    gap: 12px;
+    gap: 20px;
     justify-content: center;
     margin-top: 40px;
     margin-bottom: 30px;
@@ -155,7 +155,7 @@
     border-radius: 50%;
     text-decoration: none;
     color: #333;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     background-color: transparent;
     border: none;
@@ -177,7 +177,7 @@
     position: fixed;
     bottom: 32px;
     right: 32px;
-    padding: 14px 40px;
+    padding: 10px 40px;
     border-radius: 20px;
     background-color: #34332d;
     color: white;

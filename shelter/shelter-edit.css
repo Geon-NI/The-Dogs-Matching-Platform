@@ -127,7 +127,7 @@ input[type="time"]:valid {
 
 /* 버튼 영역 */
 .btn-area {
-    margin-top: 20px;
+    margin-top: 40px;
     display: flex;
     justify-content: center;
     gap: 18px;
@@ -152,3 +152,12 @@ input[type="time"]:valid {
     background-color: #c60000;
     color: #fff;
 }
+.submit-btn:hover{
+    background-color: #111;
+    transform: translateY(-1px);
+}
+.cancel-btn:hover{
+    background-color: #ff0000;
+    transform: translateY(-1px);
+}
+

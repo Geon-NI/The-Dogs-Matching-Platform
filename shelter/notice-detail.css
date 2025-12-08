@@ -12,7 +12,7 @@
     max-width: 1150px;
     margin: 0 auto 32px auto;
     background-color: #f6f6f6;
-    border-radius: 24px;
+    border-radius: 20px;
     border: 2px solid #111;
     display: flex;
     padding: 32px 40px;
@@ -85,7 +85,7 @@
     width: 100%;
     max-width: 1150px;
     margin: 0 auto;
-}
+    }
 
 /* 테이블 기본 */
 .apply-table {
@@ -94,18 +94,22 @@
     background-color: #ffffff;
     margin-bottom: 24px;
     table-layout: fixed;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    overflow: hidden;
+
 }
 
 .apply-table thead th {
-    height: 60px;
-    font-size: 18px;
+    height: 65px;
+    font-size: 22px;
     border-bottom: 2px solid #111;
     background-color: #ffeec1;
 }
 
 .apply-table tbody td {
-    height: 64px;
-    font-size: 18px;
+    height: 70px;
+    font-size: 20px;
     text-align: center;
     border-bottom: 1px solid #ddd;
 }
@@ -193,12 +197,12 @@
 }
 
 .complete-btn {
-    padding: 12px 60px;
+    padding: 10px 40px;
     border-radius: 18px;
     border: none;
     background-color: #34332d;
     color: #fff;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s, box-shadow 0.1s;

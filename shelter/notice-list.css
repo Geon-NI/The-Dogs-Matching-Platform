@@ -70,7 +70,7 @@
 .save-btn {
     margin-top: 20px;
     margin-left: auto;
-    padding: 10px 38px;
+    padding: 10px 40px;
     background-color: #34332d;
     color: #fff;
     border-radius: 15px;
@@ -106,7 +106,7 @@
 /* ====== pagination (dog-list에서 복붙) ====== */
 .bottom-bar {
     width: 100%;
-    margin-top: 0px;
+    margin-top: 40px;
     display: flex;
     align-items: center;
     position: relative;
@@ -117,7 +117,7 @@
     flex: 1;                    /* ← 가운데 공간 확보 */
     display: flex;
     justify-content: center;    /* 페이지 번호 중앙 배치 */
-    gap: 12px;
+    gap: 20px;
 }
 
 .save-btn {
@@ -133,7 +133,7 @@
     border-radius: 50%;
     text-decoration: none;
     color: #333;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     background-color: transparent;
     border: none;

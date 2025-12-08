@@ -33,12 +33,12 @@
 .dog-name-header {
     background-color: #ffefb8;
     padding: 14px;
-    border-radius: 8px;
+    border-radius: 5px;
     text-align: center;
 }
 
 .dog-title {
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 700;
     color: #111;
 }
@@ -46,7 +46,7 @@
 /* ===== 메인 콘텐츠 영역 ===== */
 .modal-main {
     display: flex;
-    gap: 27px;
+    gap: 50px;
 }
 
 /* ===== 왼쪽 섹션 ===== */
@@ -54,14 +54,14 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 30px;
 }
 
 /* ===== 강아지 이미지 ===== */
 .dog-image-section {
     background-color: #f6f6f6;
     border-radius: 8px;
-    padding: 18px;
+    padding: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,7 +69,7 @@
 
 .dog-detail-image {
 
-    width: 280px;
+    width: 300px;
     height: auto;
     object-fit: contain;
 }
@@ -83,9 +83,9 @@
     width: 100%;
     border-collapse: collapse;
     background-color: #f6f6f6;
-    border-radius: 8px;
+    border-radius: 1px;
     overflow: hidden;
-    border: 2px solid #333;
+    border: 0px solid #333;
 }
 
 .disease-table thead {
@@ -94,21 +94,21 @@
 
 .disease-table th,
 .disease-table td {
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     border: 1px dotted #999;
 }
 
 .disease-table th {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
     color: #111;
-    border-bottom: 2px solid #333;
+    border-bottom: 1px dotted #333;
 }
 
 .disease-table td {
-    font-size: 30px;
-    font-weight: 900;
+    font-size: 25px;
+    font-weight: 600;
 }
 
 .yes {
@@ -138,7 +138,7 @@
 .info-row {
     display: grid;
     grid-template-columns: 109px 1fr;
-    padding: 22px 9px;
+    padding: 20px 9px;
     border-bottom: 1px dotted #999;
     flex: 1;
     align-items: center;
@@ -163,19 +163,20 @@
 
 /* ===== 버튼 그룹 (모달 밖) ===== */
 .button-group {
+    margin-top: 30px;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 30px;
     width: 100%;
     max-width: 820px;
 }
 
 .cancel-btn,
 .adopt-btn {
-    padding: 12px 50px;
+    padding: 10px 40px;
     border: none;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;

@@ -286,7 +286,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- 비밀번호 -->
                 <div class="form-row">
                     <label for="password">비밀번호</label>
-                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요.">
+                    <input type="password" id="password" name="password" placeholder="변경 시에만 입력">
                 </div>
 
                 <!-- 보호소명 (수정 불가) -->

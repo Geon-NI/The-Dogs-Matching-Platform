@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 // 1. 로그인 체크

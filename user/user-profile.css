@@ -1,78 +1,73 @@
 /* ===== 오른쪽 메인 콘텐츠 ===== */
 .main-content {
     flex: 1;
-    padding: 27px 36px 18px 36px;
-    background-color: #ffffff;
-    overflow-y: auto;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-}
-
-.page-title {
-    font-size: 27px;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 23px;
-    width: 100%;
-    max-width: 820px;
+    align-items: center;
+    padding: 40px 60px;
+    background-color: #ffffff;
 }
 
 /* ===== 폼 스타일 ===== */
 .profile-form {
-    width: 100%;
-    max-width: 820px;
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
 }
 
+/* 한 줄: 라벨 + 입력영역 */
 .form-group {
     display: flex;
     align-items: center;
-    margin-bottom: 17px;
 }
 
+/* 라벨 */
 .form-group label {
-    width: 109px;
+    width: 120px;              /* 좌측 고정 너비 */
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
     color: #111;
-    margin-right: 18px;
     flex-shrink: 0;
 }
 
-.form-input {
+/* 입력 컨테이너 */
+.input-container {
     flex: 1;
-    padding: 13px 18px;
-    border: 1px solid #ddd;
-    font-size: 13px;
-    background-color: white;
-    transition: all 0.3s;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
+/* 기본 input */
+.form-input {
+    width: 780px;
+    height: 52px;
+    padding: 0 14px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    background-color: #fff;
+    transition: all 0.3s;
+}
+
+/* 포커스 효과 */
 .form-input:focus {
     outline: none;
     border-color: #333;
-    box-shadow: 0 0 0 1.3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.08);
 }
 
 .form-input::placeholder {
     color: #999;
 }
 
+/* ID/이름/생년월일은 회색 + 수정불가 */
 .form-input.readonly {
-    background-color: #e0e0e0;
-    color: #666;
+    background-color: #d7d7d7;
+    border-color: #c0c0c0;
+    color: #333;
     cursor: not-allowed;
-}
-
-/* 입력 필드 컨테이너 */
-.input-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
 }
 
 /* 입력 필드 행 배치 */
@@ -82,86 +77,83 @@
     width: 100%;
 }
 
-.form-input.half {
-    flex: 1;
-    width: 100%;
-}
-
+/* 생년월일 3등분 */
 .form-input.third {
     flex: 1;
-    width: 100%;
+    width: auto;
 }
 
 /* =============================
    거주지 드롭다운 (shelter-edit 기반)
    ============================= */
-
-/* 드롭다운이 들어있는 행은 input-row를 그대로 사용 */
 .input-row select.form-input {
-    padding: 12px 15px;      /* shelter-edit 과 비슷한 패딩 */
+    flex: 1;
+    width: auto;
+    padding: 12px 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 14px;
-    height: 45px;            /* 살짝 낮은 높이로 드롭다운 느낌 */
+    height: 45px;
     background-color: #fff;
     text-align: center;
-    appearance: none;        /* 기본 화살표 스타일 제거 (브라우저 기본 숨김) */
+    appearance: none;
 }
 
-/* select 포커스 시도 input과 동일한 느낌 유지 */
+/* select 포커스 */
 .input-row select.form-input:focus {
     outline: none;
     border-color: #333;
-    box-shadow: 0 0 0 1.3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.08);
 }
 
 /* 성별 버튼 */
 .gender-btn {
     flex: 1;
-    padding: 13px;
+    padding: 12px 0;
     border: 1px solid #ddd;
-    background-color: #ffffff;
+    border-radius: 6px;
+    background-color: #fff;
     font-size: 17px;
     font-weight: 600;
     color: #111;
     cursor: pointer;
     transition: all 0.3s;
-    width: 100%;
 }
 
 .gender-btn:hover {
-    background-color: #f0f0f0;
-    border-color: #333;
+    background-color: #f5f5f5;
+    border-color: #999;
 }
 
 .gender-btn.selected {
-    background-color: #e0e0e0;
-    color: #111;
+    background-color: #333;
+    color: #fff;
     border-color: #333;
 }
 
 /* 버튼 영역 */
 .button-group {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 18px;
+    gap: 18px;
 }
 
 .submit-btn,
 .delete-btn {
-    padding: 10px 27px;
+    width: 160px;
+    padding: 12px 0;
+    border-radius: 10px;
     border: none;
-    border-radius: 9px;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
 }
 
 .submit-btn {
     background-color: #333;
-    color: white;
+    color: #fff;
 }
 
 .submit-btn:hover {
@@ -176,12 +168,12 @@
 }
 
 .delete-btn {
-    background-color: #dc0000;
-    color: white;
+    background-color: #c60000;
+    color: #fff;
 }
 
 .delete-btn:hover {
-    background-color: #b00000;
+    background-color: #a00000;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -194,16 +186,16 @@
 /* 반응형 디자인 */
 @media (max-width: 1024px) {
     .main-content {
-        padding: 27px 27px;
+        padding: 40px 40px;
     }
 
-    .sidebar {
-        width: 250px;
+    .profile-form {
+        width: 100%;
+        max-width: 900px;
     }
 
-    .profile-icon {
-        width: 120px;
-        height: 120px;
+    .form-input {
+        width: 100%;
     }
 }
 
@@ -212,48 +204,45 @@
         flex-direction: column;
     }
 
-    .sidebar {
-        width: 100%;
+    .main-content {
         padding: 30px 20px;
     }
 
-    .main-content {
-        padding: 20px 14px;
-    }
-
-    .page-title {
-        font-size: 22px;
-        margin-bottom: 20px;
+    .profile-form {
+        width: 100%;
     }
 
     .form-group {
         flex-direction: column;
         align-items: flex-start;
+        gap: 8px;
     }
 
     .form-group label {
         width: 100%;
-        margin-right: 0;
-        margin-bottom: 8px;
+    }
+
+    .form-input {
+        width: 100%;
     }
 
     .input-row {
-        width: 100%;
         flex-direction: column;
+        gap: 10px;
     }
 
-    .form-input.half,
-    .form-input.third {
+    .form-input.third,
+    .input-row select.form-input {
         width: 100%;
     }
 
     .button-group {
         flex-direction: column;
+        gap: 10px;
     }
 
     .submit-btn,
     .delete-btn {
-	
         width: 100%;
     }
 }
