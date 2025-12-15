@@ -87,6 +87,47 @@ if ($mode === 'load') {
     }
     exit;
 }
+// 4. 보호소 탈퇴 (POST action=delete)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete') {
+
+    // JSON으로 응답할 거라서 헤더 바꿔주기
+    header('Content-Type: application/json; charset=UTF-8');
+
+    // 이 보호소에 등록된 강아지가 남아 있으면 FK 때문에 삭제가 안 될 수도 있으니(선택 사항)
+    $sid_esc = str_replace("'", "''", $shelter_id);
+
+    $sql_del = "
+        DELETE FROM SHELTER
+        WHERE shelter_id = '" . $sid_esc . "'
+    ";
+    $stmt_del = oci_parse($conn, $sql_del);
+
+    if (!oci_execute($stmt_del, OCI_NO_AUTO_COMMIT)) {
+        $e = oci_error($stmt_del);
+        oci_rollback($conn);
+        oci_free_statement($stmt_del);
+        oci_close($conn);
+
+        echo json_encode([
+            'error'  => '보호소 탈퇴 중 오류가 발생했습니다.',
+            'detail' => $e['message'] ?? ''
+        ], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
+    oci_commit($conn);
+    oci_free_statement($stmt_del);
+    oci_close($conn);
+
+    session_unset();
+    session_destroy();
+
+    echo json_encode([
+        'success' => true,
+        'message' => '보호소 탈퇴가 완료되었습니다.'
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+}
 
 // 4. POST 요청이면 수정 처리
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -429,7 +470,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     console.error(err);
                     alert('보호소 정보를 불러오는 중 오류가 발생했습니다.');
                 });
+		// 🟢 3) 탈퇴 버튼 클릭 이벤트 연결 — 이게 **필수**
+    			const btnDelete = document.getElementById('btnDelete');
+   			if (btnDelete) {
+       		 	btnDelete.addEventListener('click', handleDelete);
+    		}
+		
+    	    });
+
+
+// ===========================
+//  회원 탈퇴
+// ===========================
+function handleDelete() {
+    if (!confirm('정말로 탈퇴하시겠습니까?\n탈퇴 시 모든 정보가 삭제되며 복구할 수 없습니다.')) {
+        return;
+    }
+    if (!confirm('다시 한 번 확인합니다. 탈퇴하시겠습니까?')) {
+        return;
+    }
+
+    const formData = new URLSearchParams();
+    formData.append('action', 'delete');
+
+    fetch('shelter_edit.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                alert(data.error + (data.detail ? "\n\n" + data.detail : ""));
+                console.error(data);
+                return;
+            }
+            alert('회원 탈퇴가 완료되었습니다.');
+            window.location.href = '../index.html';
+        })
+        .catch(err => {
+            console.error(err);
+            alert('회원 탈퇴 처리 중 오류가 발생했습니다.');
         });
+}
+
     </script>
 </body>
 

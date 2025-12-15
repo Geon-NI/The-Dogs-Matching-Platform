@@ -257,9 +257,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
 
     $conn = get_db_connection();
 
-    $sql = "DELETE FROM USERS WHERE user_id = :uid";
+    // user_id 안에 ' 들어가면 깨지니까 이스케이프
+    $uid_esc = str_replace("'", "''", $login_user_id);
+
+    $sql = "
+        DELETE FROM USERS
+        WHERE user_id = '" . $uid_esc . "'
+    ";
     $stmt = oci_parse($conn, $sql);
-    oci_bind_by_name($stmt, ':uid', $login_user_id);
 
     if (!oci_execute($stmt, OCI_NO_AUTO_COMMIT)) {
         $e = oci_error($stmt);
